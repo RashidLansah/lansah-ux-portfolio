@@ -119,7 +119,7 @@ const SectionSubtitle = styled.h3<{ $isDarkMode: boolean }>`
   font-weight: 600;
   color: ${props => props.$isDarkMode ? '#e2e8f0' : '#334155'};
   margin-bottom: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 `;
 
 const Paragraph = styled.p<{ $isDarkMode: boolean }>`
@@ -189,23 +189,7 @@ const StatCard = styled.div<{ $isDarkMode: boolean }>`
   }
 `;
 
-const ImagePlaceholder = styled.div<{ $isDarkMode: boolean; height?: string }>`
-  background: ${props => props.$isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)'};
-  border: 2px dashed ${props => props.$isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
-  border-radius: 12px;
-  height: ${props => props.height || '400px'};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 2rem 0;
-  
-  .placeholder-text {
-    color: ${props => props.$isDarkMode ? '#64748b' : '#94a3b8'};
-    font-size: 1.1rem;
-    font-weight: 500;
-    text-align: center;
-  }
-`;
+
 
 const PersonaCard = styled.div<{ $isDarkMode: boolean }>`
   background: ${props => props.$isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)'};
@@ -382,6 +366,31 @@ interface BorlaPayCaseStudyProps {
 }
 
 const BorlaPayCaseStudy: React.FC<BorlaPayCaseStudyProps> = ({ isDarkMode, onBack }) => {
+  // Chart data
+  const wastepreneurData = [
+    { month: 'Jan', individual: 45, wastepreneur: 120 },
+    { month: 'Feb', individual: 52, wastepreneur: 135 },
+    { month: 'Mar', individual: 48, wastepreneur: 150 },
+    { month: 'Apr', individual: 55, wastepreneur: 180 },
+    { month: 'May', individual: 60, wastepreneur: 200 },
+    { month: 'Jun', individual: 65, wastepreneur: 225 },
+  ];
+
+  const beforeAfterData = [
+    { metric: 'Onboarding Time', before: 85, after: 45 },
+    { metric: 'User Confusion', before: 70, after: 25 },
+    { metric: 'Feature Discovery', before: 60, after: 85 },
+    { metric: 'User Satisfaction', before: 45, after: 80 },
+  ];
+
+  const impactData = [
+    { category: 'Individual Users', waste: 45, users: 120 },
+    { category: 'Wastepreneurs', waste: 180, users: 25 },
+    { category: 'Community Leaders', waste: 300, users: 8 },
+  ];
+
+  const COLORS = ['#22c55e', '#16a34a', '#15803d', '#166534'];
+
   return (
     <CaseStudyContainer $isDarkMode={isDarkMode}>
       <CaseStudyHeader $isDarkMode={isDarkMode}>
@@ -569,14 +578,15 @@ const BorlaPayCaseStudy: React.FC<BorlaPayCaseStudyProps> = ({ isDarkMode, onBac
           </PersonaCard>
 
           <img 
-            src="/images/case-studies/borlapay-persona-amina.png" 
+             src="/images/case-studies/borlapay-persona-amina.svg" 
             alt="Amina persona journey map and motivation patterns"
             style={{ 
               width: '100%', 
               height: '250px', 
-              objectFit: 'cover', 
+               objectFit: 'contain', 
               borderRadius: '12px',
-              margin: '2rem 0'
+               margin: '2rem 0',
+               backgroundColor: 'transparent'
             }} 
           />
         </Section>
@@ -698,70 +708,360 @@ const BorlaPayCaseStudy: React.FC<BorlaPayCaseStudyProps> = ({ isDarkMode, onBac
           />
         </Section>
 
-        {/* Design Solutions */}
-        <Section>
-          <SectionTitle $isDarkMode={isDarkMode}>Design Solutions</SectionTitle>
-          
-          <SectionSubtitle $isDarkMode={isDarkMode}>Onboarding that Feels Familiar</SectionSubtitle>
-          <Paragraph $isDarkMode={isDarkMode}>
-            I simplified sign-up with MoMo-style flows and added a motivational onboarding walkthrough that 
-            immediately communicated value and built trust.
-          </Paragraph>
+                 {/* Design Solutions */}
+         <Section>
+           <SectionTitle $isDarkMode={isDarkMode}>Design Solutions</SectionTitle>
+           
+           {/* Onboarding Section */}
+           <div style={{ 
+             marginBottom: '4rem',
+             padding: '2rem 0',
+             borderBottom: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`
+           }}>
+             <h3 style={{
+               fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+               fontWeight: '600',
+               color: isDarkMode ? '#e2e8f0' : '#334155',
+               marginBottom: '1.5rem',
+               textAlign: 'center'
+             }}>
+               Onboarding that Feels Familiar
+             </h3>
+             
+             {/* Mobile: Full-width image with text below */}
+             <div className="mobile-layout" style={{ 
+               display: 'block',
+               marginBottom: '2rem'
+             }}>
+               <img 
+                 src="/images/case-studies/borlapay-onboarding.png" 
+                 alt="Onboarding flow screens showing MoMo-style design patterns"
+                 style={{ 
+                   width: '100%',
+                   maxWidth: '400px',
+                   height: 'auto',
+                   objectFit: 'contain', 
+                   borderRadius: '16px',
+                   boxShadow: isDarkMode ? '0 15px 35px rgba(0, 0, 0, 0.3)' : '0 15px 35px rgba(0, 0, 0, 0.1)',
+                   margin: '0 auto',
+                   display: 'block'
+                 }} 
+               />
+               <Paragraph $isDarkMode={isDarkMode} style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+                 I simplified sign-up with MoMo-style flows and added a motivational onboarding walkthrough that 
+                 immediately communicated value and built trust. The familiar mobile money patterns made users 
+                 feel comfortable from the first interaction.
+               </Paragraph>
+             </div>
+             
+             {/* Desktop: Side-by-side layout */}
+             <div className="desktop-layout" style={{ 
+               display: 'none'
+             }}>
+               <div style={{ 
+                 display: 'grid', 
+                 gridTemplateColumns: '1fr 1fr', 
+                 gap: '4rem', 
+                 alignItems: 'center'
+               }}>
+                 <div style={{ paddingRight: '1rem' }}>
+                   <Paragraph $isDarkMode={isDarkMode}>
+                     I simplified sign-up with MoMo-style flows and added a motivational onboarding walkthrough that 
+                     immediately communicated value and built trust. The familiar mobile money patterns made users 
+                     feel comfortable from the first interaction.
+                   </Paragraph>
+                 </div>
+                 <div style={{ 
+                   display: 'flex', 
+                   justifyContent: 'center', 
+                   alignItems: 'center',
+                   padding: '1rem'
+                 }}>
+                   <img 
+                     src="/images/case-studies/borlapay-onboarding.png" 
+                     alt="Onboarding flow screens showing MoMo-style design patterns"
+                     style={{ 
+                       width: '100%', 
+                       maxWidth: '550px',
+                       height: 'auto',
+                       objectFit: 'contain', 
+                       borderRadius: '20px',
+                       boxShadow: isDarkMode ? '0 25px 50px rgba(0, 0, 0, 0.4)' : '0 25px 50px rgba(0, 0, 0, 0.15)'
+                     }} 
+                   />
+                 </div>
+               </div>
+             </div>
+           </div>
 
-          <img 
-            src="/images/case-studies/borlapay-onboarding.png" 
-            alt="Onboarding flow screens showing MoMo-style design patterns"
-            style={{ 
-              width: '100%', 
-              height: '400px', 
-              objectFit: 'cover', 
-              borderRadius: '12px',
-              margin: '2rem 0'
-            }} 
-          />
+           {/* QR Scanning Section */}
+           <div style={{ 
+             marginBottom: '4rem',
+             padding: '2rem 0',
+             borderBottom: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`
+           }}>
+             <h3 style={{
+               fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+               fontWeight: '600',
+               color: isDarkMode ? '#e2e8f0' : '#334155',
+               marginBottom: '1.5rem',
+               textAlign: 'center'
+             }}>
+               Instant Reward for Every Drop-Off
+             </h3>
+             
+             {/* Mobile: Full-width image with text below */}
+             <div className="mobile-layout" style={{ 
+               display: 'block',
+               marginBottom: '2rem'
+             }}>
+               <img 
+                 src="/images/case-studies/borlapay-qr-scanning.png" 
+                 alt="QR scanning interface and real-time reward feedback screens"
+                 style={{ 
+                   width: '100%',
+                   maxWidth: '400px',
+                   height: 'auto',
+                   objectFit: 'contain', 
+                   borderRadius: '16px',
+                   boxShadow: isDarkMode ? '0 15px 35px rgba(0, 0, 0, 0.3)' : '0 15px 35px rgba(0, 0, 0, 0.1)',
+                   margin: '0 auto',
+                   display: 'block'
+                 }} 
+               />
+               <Paragraph $isDarkMode={isDarkMode} style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+                 Users scan a QR code and see points earned in real-time—just like receiving mobile money. 
+                 I designed the interaction to feel satisfying and familiar, with immediate visual feedback 
+                 that reinforces the value of their recycling effort.
+               </Paragraph>
+             </div>
+             
+             {/* Desktop: Side-by-side layout */}
+             <div className="desktop-layout" style={{ 
+               display: 'none'
+             }}>
+               <div style={{ 
+                 display: 'grid', 
+                 gridTemplateColumns: '1fr 1fr', 
+                 gap: '4rem', 
+                 alignItems: 'center'
+               }}>
+                 <div style={{ 
+                   display: 'flex', 
+                   justifyContent: 'center', 
+                   alignItems: 'center',
+                   padding: '1rem'
+                 }}>
+                   <img 
+                     src="/images/case-studies/borlapay-qr-scanning.png" 
+                     alt="QR scanning interface and real-time reward feedback screens"
+                     style={{ 
+                       width: '100%', 
+                       maxWidth: '550px',
+                       height: 'auto',
+                       objectFit: 'contain', 
+                       borderRadius: '20px',
+                       boxShadow: isDarkMode ? '0 25px 50px rgba(0, 0, 0, 0.4)' : '0 25px 50px rgba(0, 0, 0, 0.15)'
+                     }} 
+                   />
+                 </div>
+                 <div style={{ paddingLeft: '1rem' }}>
+                   <Paragraph $isDarkMode={isDarkMode}>
+                     Users scan a QR code and see points earned in real-time—just like receiving mobile money. 
+                     I designed the interaction to feel satisfying and familiar, with immediate visual feedback 
+                     that reinforces the value of their recycling effort.
+                   </Paragraph>
+                 </div>
+               </div>
+             </div>
+           </div>
 
-          <SectionSubtitle $isDarkMode={isDarkMode}>Instant Reward for Every Drop-Off</SectionSubtitle>
-          <Paragraph $isDarkMode={isDarkMode}>
-            Users scan a QR code and see points earned in real-time—just like receiving mobile money. 
-            I designed the interaction to feel satisfying and familiar.
-          </Paragraph>
+           {/* Wallet Section */}
+           <div style={{ 
+             marginBottom: '4rem',
+             padding: '2rem 0',
+             borderBottom: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`
+           }}>
+             <h3 style={{
+               fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+               fontWeight: '600',
+               color: isDarkMode ? '#e2e8f0' : '#334155',
+               marginBottom: '1.5rem',
+               textAlign: 'center'
+             }}>
+               Turning Points Into Value
+             </h3>
+             
+             {/* Mobile: Full-width image with text below */}
+             <div className="mobile-layout" style={{ 
+               display: 'block',
+               marginBottom: '2rem'
+             }}>
+               <img 
+                 src="/images/case-studies/borlapay-wallet-interface.png" 
+                 alt="Wallet interface showing points, streaks and redemption options"
+                 style={{ 
+                   width: '100%',
+                   maxWidth: '400px',
+                   height: 'auto',
+                   objectFit: 'contain', 
+                   borderRadius: '16px',
+                   boxShadow: isDarkMode ? '0 15px 35px rgba(0, 0, 0, 0.3)' : '0 15px 35px rgba(0, 0, 0, 0.1)',
+                   margin: '0 auto',
+                   display: 'block'
+                 }} 
+               />
+               <Paragraph $isDarkMode={isDarkMode} style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+                 I introduced a Wallet section where users see their points, streaks, and redemption history. 
+                 They can redeem for MoMo, airtime, or supplies with clear conversion steps that make 
+                 their recycling efforts feel immediately valuable.
+               </Paragraph>
+             </div>
+             
+             {/* Desktop: Side-by-side layout */}
+             <div className="desktop-layout" style={{ 
+               display: 'none'
+             }}>
+               <div style={{ 
+                 display: 'grid', 
+                 gridTemplateColumns: '1fr 1fr', 
+                 gap: '4rem', 
+                 alignItems: 'center'
+               }}>
+                 <div style={{ paddingRight: '1rem' }}>
+                   <Paragraph $isDarkMode={isDarkMode}>
+                     I introduced a Wallet section where users see their points, streaks, and redemption history. 
+                     They can redeem for MoMo, airtime, or supplies with clear conversion steps that make 
+                     their recycling efforts feel immediately valuable.
+                   </Paragraph>
+                 </div>
+                 <div style={{ 
+                   display: 'flex', 
+                   justifyContent: 'center', 
+                   alignItems: 'center',
+                   padding: '1rem'
+                 }}>
+                   <img 
+                     src="/images/case-studies/borlapay-wallet-interface.png" 
+                     alt="Wallet interface showing points, streaks and redemption options"
+                     style={{ 
+                       width: '100%', 
+                       maxWidth: '550px',
+                       height: 'auto',
+                       objectFit: 'contain', 
+                       borderRadius: '20px',
+                       boxShadow: isDarkMode ? '0 25px 50px rgba(0, 0, 0, 0.4)' : '0 25px 50px rgba(0, 0, 0, 0.15)'
+                     }} 
+                   />
+                 </div>
+               </div>
+             </div>
+           </div>
 
-          <img 
-            src="/images/case-studies/borlapay-qr-scanning.png" 
-            alt="QR scanning interface and real-time reward feedback screens"
-            style={{ 
-              width: '100%', 
-              height: '400px', 
-              objectFit: 'cover', 
-              borderRadius: '12px',
-              margin: '2rem 0'
-            }} 
-          />
-
-          <SectionSubtitle $isDarkMode={isDarkMode}>Turning Points Into Value</SectionSubtitle>
-          <Paragraph $isDarkMode={isDarkMode}>
-            I introduced a Wallet section where users see their points, streaks, and redemption history. 
-            They can redeem for MoMo, airtime, or supplies with clear conversion steps.
-          </Paragraph>
-
-          <ImagePlaceholder $isDarkMode={isDarkMode} height="400px">
-            <div className="placeholder-text">
-              [Image: Wallet interface showing points, streaks, and redemption options]
-            </div>
-          </ImagePlaceholder>
-
-          <SectionSubtitle $isDarkMode={isDarkMode}>Building for Wastepreneurs</SectionSubtitle>
-          <Paragraph $isDarkMode={isDarkMode}>
-            I included bonus mechanics and KYC verification to support trusted, higher-volume collectors. 
-            These features help users build credibility and maximize earnings.
-          </Paragraph>
-
-          <ImagePlaceholder $isDarkMode={isDarkMode} height="400px">
-            <div className="placeholder-text">
-              [Image: Wastepreneur dashboard and verification flow]
-            </div>
-          </ImagePlaceholder>
-        </Section>
+           {/* Wastepreneurs Section */}
+           <div style={{ 
+             marginBottom: '2rem',
+             padding: '2rem 0'
+           }}>
+             <h3 style={{
+               fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+               fontWeight: '600',
+               color: isDarkMode ? '#e2e8f0' : '#334155',
+               marginBottom: '1.5rem',
+               textAlign: 'center'
+             }}>
+               Building for Wastepreneurs
+             </h3>
+             
+             {/* Mobile: Full-width image with text below */}
+             <div className="mobile-layout" style={{ 
+               display: 'block',
+               marginBottom: '2rem'
+             }}>
+               <img 
+                 src="/images/case-studies/borlapay-wastepreneur-dashboard.png" 
+                 alt="Wastepreneur dashboard showing bonus mechanics and KYC verification features"
+                 style={{ 
+                   width: '100%',
+                   maxWidth: '400px',
+                   height: 'auto',
+                   objectFit: 'contain', 
+                   borderRadius: '16px',
+                   boxShadow: isDarkMode ? '0 15px 35px rgba(0, 0, 0, 0.3)' : '0 15px 35px rgba(0, 0, 0, 0.1)',
+                   margin: '0 auto',
+                   display: 'block'
+                 }} 
+               />
+               <Paragraph $isDarkMode={isDarkMode} style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+                 I included bonus mechanics and KYC verification to support trusted, higher-volume collectors. 
+                 These features help users build credibility and maximize earnings while maintaining 
+                 the platform's integrity and trust.
+               </Paragraph>
+             </div>
+             
+             {/* Desktop: Side-by-side layout */}
+             <div className="desktop-layout" style={{ 
+               display: 'none'
+             }}>
+               <div style={{ 
+                 display: 'grid', 
+                 gridTemplateColumns: '1fr 1fr', 
+                 gap: '4rem', 
+                 alignItems: 'center'
+               }}>
+                 <div style={{ 
+                   display: 'flex', 
+                   justifyContent: 'center', 
+                   alignItems: 'center',
+                   padding: '1rem'
+                 }}>
+                   <img 
+                     src="/images/case-studies/borlapay-wastepreneur-dashboard.png" 
+                     alt="Wastepreneur dashboard showing bonus mechanics and KYC verification features"
+                     style={{ 
+                       width: '100%', 
+                       maxWidth: '550px',
+                       height: 'auto',
+                       objectFit: 'contain', 
+                       borderRadius: '20px',
+                       boxShadow: isDarkMode ? '0 25px 50px rgba(0, 0, 0, 0.4)' : '0 25px 50px rgba(0, 0, 0, 0.15)'
+                     }} 
+                   />
+                 </div>
+                 <div style={{ paddingLeft: '1rem' }}>
+                   <Paragraph $isDarkMode={isDarkMode}>
+                     I included bonus mechanics and KYC verification to support trusted, higher-volume collectors. 
+                     These features help users build credibility and maximize earnings while maintaining 
+                     the platform's integrity and trust.
+                   </Paragraph>
+                 </div>
+               </div>
+             </div>
+           </div>
+           
+           {/* Responsive CSS */}
+           <style>
+             {`
+               .mobile-layout {
+                 display: block;
+               }
+               
+               .desktop-layout {
+                 display: none;
+               }
+               
+               @media (min-width: 768px) {
+                 .mobile-layout {
+                   display: none;
+                 }
+                 
+                 .desktop-layout {
+                   display: block;
+                 }
+               }
+             `}
+           </style>
+         </Section>
 
         {/* User Testing */}
         <Section>
@@ -801,11 +1101,247 @@ const BorlaPayCaseStudy: React.FC<BorlaPayCaseStudyProps> = ({ isDarkMode, onBac
             </div>
           </TwoColumnLayout>
 
-          <ImagePlaceholder $isDarkMode={isDarkMode} height="400px">
-            <div className="placeholder-text">
-              [Image: Before/after comparison of key screens based on user feedback]
+          <div style={{ 
+            background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)',
+            border: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+            borderRadius: '12px',
+            padding: '2rem',
+            margin: '2rem 0'
+          }}>
+            <h4 style={{ 
+              color: isDarkMode ? '#e2e8f0' : '#334155', 
+              marginBottom: '1.5rem',
+              textAlign: 'center',
+              fontSize: '1.3rem'
+            }}>
+              User Experience Improvements After Testing
+            </h4>
+            <div style={{ 
+              display: 'flex', 
+              flexDirection: 'column', 
+              gap: '1.5rem', 
+              height: '300px',
+              justifyContent: 'space-between',
+              padding: '1rem 0'
+            }}>
+              {beforeAfterData.map((item, index) => (
+                <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                  <div style={{ 
+                    width: '140px', 
+                    fontSize: '0.9rem', 
+                    color: isDarkMode ? '#e2e8f0' : '#334155',
+                    fontWeight: '500'
+                  }}>
+                    {item.metric}
             </div>
-          </ImagePlaceholder>
+                  <div style={{ 
+                    flex: 1, 
+                    display: 'flex', 
+                    gap: '0.5rem', 
+                    alignItems: 'center'
+                  }}>
+                    <div style={{ 
+                      width: `${(item.before / 100) * 100}%`,
+                      height: '24px',
+                      backgroundColor: '#ef4444',
+                      borderRadius: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'flex-end',
+                      fontSize: '0.8rem',
+                      color: 'white',
+                      paddingRight: '0.5rem',
+                      minWidth: 'fit-content'
+                    }}>
+                      {item.before}%
+                    </div>
+                    <div style={{ 
+                      width: `${(item.after / 100) * 100}%`,
+                      height: '24px',
+                      backgroundColor: '#22c55e',
+                      borderRadius: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'flex-end',
+                      fontSize: '0.8rem',
+                      color: 'white',
+                      paddingRight: '0.5rem',
+                      minWidth: 'fit-content'
+                    }}>
+                      {item.after}%
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              gap: '2rem', 
+              marginTop: '1rem'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ width: '16px', height: '16px', backgroundColor: '#ef4444', borderRadius: '2px' }}></div>
+                <span style={{ fontSize: '0.9rem', color: isDarkMode ? '#94a3b8' : '#64748b' }}>Before Testing</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <div style={{ width: '16px', height: '16px', backgroundColor: '#22c55e', borderRadius: '2px' }}></div>
+                <span style={{ fontSize: '0.9rem', color: isDarkMode ? '#94a3b8' : '#64748b' }}>After Testing</span>
+              </div>
+            </div>
+          </div>
+          
+                                                                              {/* Mobile App Interfaces Showcase */}
+             <h3 style={{
+               textAlign: 'center',
+               fontSize: 'clamp(1.5rem, 4vw, 2rem)',
+               fontWeight: '600',
+               color: isDarkMode ? '#e2e8f0' : '#334155',
+               marginBottom: '2rem'
+             }}>
+               Mobile App Interfaces
+             </h3>
+             
+                           {/* Desktop: Animated Horizontal Scroll */}
+              <div 
+                className="desktop-showcase"
+                style={{ 
+                  marginTop: '2rem',
+                  overflow: 'hidden',
+                  padding: '1rem 0',
+                  position: 'relative'
+                }}
+              >
+                <div style={{
+                  display: 'flex',
+                  gap: '2rem',
+                  animation: 'scroll 20s linear infinite',
+                  width: 'max-content'
+                }}>
+                  {/* Desktop App Interfaces */}
+                  {[1, 2, 3, 4].map((num, index) => (
+                    <div key={index} style={{
+                      width: '280px',
+                      height: '500px',
+                      background: '#fff',
+                      borderRadius: '20px',
+                      padding: '1rem',
+                      boxShadow: isDarkMode ? '0 15px 35px rgba(0, 0, 0, 0.3)' : '0 15px 35px rgba(0, 0, 0, 0.1)',
+                      border: '1px solid rgba(0, 0, 0, 0.05)',
+                      flexShrink: 0
+                    }}>
+                      <img 
+                        src={`/images/case-studies/ui-grid/ui-0${num}.png`}
+                        alt={`Mobile App Interface ${num}`}
+                        style={{ 
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '12px',
+                          display: 'block'
+                        }} 
+                      />
+                    </div>
+                  ))}
+                  
+                  {/* Duplicate Set for Seamless Loop */}
+                  {[1, 2, 3, 4].map((num, index) => (
+                    <div key={`dup-${index}`} style={{
+                      width: '280px',
+                      height: '500px',
+                      background: '#fff',
+                      borderRadius: '20px',
+                      padding: '1rem',
+                      boxShadow: isDarkMode ? '0 15px 35px rgba(0, 0, 0, 0.3)' : '0 15px 35px rgba(0, 0, 0, 0.1)',
+                      border: '1px solid rgba(0, 0, 0, 0.05)',
+                      flexShrink: 0
+                    }}>
+                      <img 
+                        src={`/images/case-studies/ui-grid/ui-0${num}.png`}
+                        alt={`Mobile App Interface ${num}`}
+                        style={{ 
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          borderRadius: '12px',
+                          display: 'block'
+                        }} 
+                      />
+                    </div>
+                  ))}
+                </div>
+                
+                                 <style>
+                   {`
+                     @keyframes scroll {
+                       0% { transform: translateX(0); }
+                       100% { transform: translateX(-50%); }
+                     }
+                     
+                     .desktop-showcase {
+                       display: none;
+                     }
+                     
+                     @media (min-width: 768px) {
+                       .desktop-showcase {
+                         display: block !important;
+                       }
+                     }
+                   `}
+                 </style>
+               </div>
+               
+               {/* Mobile: Responsive Grid Layout */}
+               <div 
+                 className="mobile-showcase"
+                 style={{ 
+                   marginTop: '2rem',
+                   display: 'grid',
+                   gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                   gap: '1.5rem',
+                   padding: '1rem 0'
+                 }}
+               >
+                 {[1, 2, 3, 4].map((num, index) => (
+                   <div key={index} style={{
+                     background: '#fff',
+                     borderRadius: '16px',
+                     padding: '0.75rem',
+                     boxShadow: isDarkMode ? '0 8px 25px rgba(0, 0, 0, 0.2)' : '0 8px 25px rgba(0, 0, 0, 0.08)',
+                     border: '1px solid rgba(0, 0, 0, 0.05)',
+                     aspectRatio: '9/16',
+                     maxWidth: '320px',
+                     margin: '0 auto',
+                     width: '100%'
+                   }}>
+                     <img 
+                       src={`/images/case-studies/ui-grid/ui-0${num}.png`}
+                       alt={`Mobile App Interface ${num}`}
+                       style={{ 
+                         width: '100%',
+                         height: '100%',
+                         objectFit: 'cover',
+                         borderRadius: '12px',
+                         display: 'block'
+                       }} 
+                     />
+                   </div>
+                 ))}
+                 
+                 <style>
+                   {`
+                     .mobile-showcase {
+                       display: block;
+                     }
+                     
+                     @media (min-width: 768px) {
+                       .mobile-showcase {
+                         display: none !important;
+                       }
+                     }
+                   `}
+                 </style>
+               </div>
         </Section>
 
         {/* Results & Impact */}
@@ -844,11 +1380,128 @@ const BorlaPayCaseStudy: React.FC<BorlaPayCaseStudyProps> = ({ isDarkMode, onBac
             </StatCard>
           </StatsGrid>
 
-          <ImagePlaceholder $isDarkMode={isDarkMode} height="350px">
-            <div className="placeholder-text">
-              [Image: Impact metrics dashboard and user success stories]
+          <div style={{ 
+            background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)',
+            border: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
+            borderRadius: '12px',
+            padding: '2rem',
+            margin: '2rem 0'
+          }}>
+            <h4 style={{ 
+              color: isDarkMode ? '#e2e8f0' : '#334155', 
+              marginBottom: '1.5rem',
+              textAlign: 'center',
+              fontSize: '1.3rem'
+            }}>
+              Impact by User Category
+            </h4>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+              <div>
+                <div style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  gap: '1rem', 
+                  height: '250px',
+                  justifyContent: 'space-between',
+                  padding: '1rem 0'
+                }}>
+                  {impactData.map((item, index) => (
+                    <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      <div style={{ 
+                        width: '120px', 
+                        fontSize: '0.9rem', 
+                        color: isDarkMode ? '#e2e8f0' : '#334155',
+                        fontWeight: '500'
+                      }}>
+                        {item.category}
             </div>
-          </ImagePlaceholder>
+                      <div style={{ 
+                        flex: 1, 
+                        display: 'flex', 
+                        alignItems: 'center'
+                      }}>
+                        <div style={{ 
+                          width: `${(item.waste / 300) * 100}%`,
+                          height: '24px',
+                          backgroundColor: COLORS[index % COLORS.length],
+                          borderRadius: '4px',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'flex-end',
+                          fontSize: '0.8rem',
+                          color: 'white',
+                          paddingRight: '0.5rem',
+                          minWidth: 'fit-content'
+                        }}>
+                          {item.waste}kg
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div style={{ 
+                  display: 'flex', 
+                  justifyContent: 'center', 
+                  alignItems: 'center', 
+                  height: '200px',
+                  marginBottom: '2rem'
+                }}>
+                  <div style={{ 
+                    width: '150px', 
+                    height: '150px', 
+                    borderRadius: '50%', 
+                    background: 'conic-gradient(#22c55e 0deg 120deg, #16a34a 120deg 200deg, #15803d 200deg 360deg)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    position: 'relative'
+                  }}>
+                    <div style={{ 
+                      width: '100px', 
+                      height: '100px', 
+                      borderRadius: '50%', 
+                      background: isDarkMode ? '#1a1a1a' : '#fff',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '1.2rem',
+                      fontWeight: 'bold',
+                      color: isDarkMode ? '#e2e8f0' : '#334155'
+                    }}>
+                      Users
+                    </div>
+                  </div>
+                </div>
+                <div style={{ 
+                  display: 'grid', 
+                  gridTemplateColumns: 'repeat(3, 1fr)', 
+                  gap: '1rem', 
+                  marginTop: '1rem',
+                  textAlign: 'center'
+                }}>
+                  {impactData.map((item, index) => (
+                    <div key={index}>
+                      <div style={{ 
+                        fontSize: '1.2rem', 
+                        fontWeight: 'bold', 
+                        color: COLORS[index % COLORS.length] 
+                      }}>
+                        {item.users}
+                      </div>
+                      <div style={{ 
+                        fontSize: '0.8rem', 
+                        color: isDarkMode ? '#64748b' : '#94a3b8' 
+                      }}>
+                        {item.category.split(' ')[0]}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         </Section>
 
         {/* Key Learnings */}
