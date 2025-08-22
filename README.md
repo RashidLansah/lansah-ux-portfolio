@@ -1,46 +1,108 @@
-# Getting Started with Create React App
+# Lansah UX Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive UX portfolio website built with React, TypeScript, and Styled Components. This portfolio replicates the design and functionality of Arsen Kolyba's portfolio with a clean, minimalist aesthetic.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Modern Design**: Clean, minimalist black and white design
+- **Responsive Layout**: Mobile-first responsive design
+- **Interactive Elements**: Smooth animations and hover effects using Framer Motion
+- **Project Showcase**: Grid layout displaying 13 selected projects
+- **Interactive Email**: Press 'R' key to reveal contact email
+- **Social Links**: Integration with Twitter, Figma, and email
+- **Ukraine Support Banner**: Shows solidarity with Ukraine
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React 18
+- TypeScript
+- Styled Components
+- Framer Motion
+- React Icons
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (version 14 or higher)
+- npm or yarn
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd lansah-ux-portfolio
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
+```bash
+npm start
+```
 
-### `npm run eject`
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Available Scripts
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- `npm start` - Runs the app in development mode
+- `npm run build` - Builds the app for production
+- `npm test` - Launches the test runner
+- `npm run eject` - Ejects from Create React App (one-way operation)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Project Structure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+src/
+├── App.tsx          # Main application component
+├── App.css          # Custom styles
+├── index.tsx        # Application entry point
+└── index.css        # Global styles
+```
 
-## Learn More
+## Customization
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Changing the Name
+Update the `Name` component in `App.tsx` to change the displayed name.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Adding Projects
+Modify the `projects` array in `App.tsx` to add, remove, or edit projects.
+
+### Styling
+The portfolio uses Styled Components for styling. Modify the styled components in `App.tsx` to change colors, fonts, and layout.
+
+### Email
+Update the email address in the `Email` component and the `handleKeyPress` function.
+
+## Features to Add
+
+- [ ] About page
+- [ ] Lab/experiments section
+- [ ] Contact form
+- [ ] Blog section
+- [ ] Dark/light theme toggle
+- [ ] Project detail pages
+- [ ] Image galleries for projects
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Acknowledgments
+
+- Design inspiration from [Arsen Kolyba's portfolio](https://arsenkolyba.com/)
+- Built with Create React App
+- Icons from React Icons
+- Animations powered by Framer Motion
