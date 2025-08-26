@@ -1318,13 +1318,73 @@ const experiments = [
     id: 1,
     title: "AI Suggestion with Confidence Reasoning",
     description: "AI suggestions with confidence levels and reasoning for better user trust.",
-    gif: "/images/experiments/ai-confidence-reasoning.gif"
+    gif: "/images/experiments/ai-confidence-reasoning.gif",
+    gifOptimized: "/images/experiments/optimized/ai-confidence-reasoning-optimized.gif",
+    gifMobile: "/images/experiments/optimized/ai-confidence-reasoning-optimized.gif"
   },
   {
     id: 2,
     title: "Human in the Loop Feedback",
     description: "Human feedback loops that help AI systems learn and improve accuracy.",
-    gif: "/images/experiments/human-feedback-loop.gif"
+    gif: "/images/experiments/human-feedback-loop.gif",
+    gifOptimized: "/images/experiments/optimized/human-feedback-loop-optimized.gif",
+    gifMobile: "/images/experiments/optimized/human-feedback-loop-optimized.gif"
+  },
+  {
+    id: 3,
+    title: "UI Design",
+    description: "",
+    gif: "/images/experiments/optimized/App 01-optimized.gif",
+    gifOptimized: "/images/experiments/optimized/App 01-optimized.gif",
+    gifMobile: "/images/experiments/optimized/App 01-optimized.gif"
+  },
+  {
+    id: 4,
+    title: "UI Design",
+    description: "",
+    gif: "/images/experiments/optimized/App 02-optimized.gif",
+    gifOptimized: "/images/experiments/optimized/App 02-optimized.gif",
+    gifMobile: "/images/experiments/optimized/App 02-optimized.gif"
+  },
+  {
+    id: 5,
+    title: "UI Design",
+    description: "",
+    gif: "/images/experiments/optimized/App 03-optimized.gif",
+    gifOptimized: "/images/experiments/optimized/App 03-optimized.gif",
+    gifMobile: "/images/experiments/optimized/App 03-optimized.gif"
+  },
+  {
+    id: 6,
+    title: "UI Design",
+    description: "",
+    gif: "/images/experiments/optimized/App 04-optimized.gif",
+    gifOptimized: "/images/experiments/optimized/App 04-optimized.gif",
+    gifMobile: "/images/experiments/optimized/App 04-optimized.gif"
+  },
+  {
+    id: 7,
+    title: "UI Design",
+    description: "",
+    gif: "/images/experiments/optimized/App 05-optimized.gif",
+    gifOptimized: "/images/experiments/optimized/App 05-optimized.gif",
+    gifMobile: "/images/experiments/optimized/App 05-optimized.gif"
+  },
+  {
+    id: 8,
+    title: "UI Design",
+    description: "",
+    gif: "/images/experiments/optimized/App 07-optimized.gif",
+    gifOptimized: "/images/experiments/optimized/App 07-optimized.gif",
+    gifMobile: "/images/experiments/optimized/App 07-optimized.gif"
+  },
+  {
+    id: 9,
+    title: "UI Design",
+    description: "",
+    gif: "/images/experiments/optimized/App 08-optimized.gif",
+    gifOptimized: "/images/experiments/optimized/App 08-optimized.gif",
+    gifMobile: "/images/experiments/optimized/App 08-optimized.gif"
   }
 ];
 
@@ -1336,6 +1396,14 @@ const PageContainer = styled.div<{ $isDarkMode: boolean }>`
   max-width: 1200px;
   margin: 0 auto;
   transition: all 0.3s ease;
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
+  }
 `;
 
 
@@ -1346,12 +1414,31 @@ const PageHeader = styled.div<{ $isDarkMode: boolean }>`
   align-items: center;
   padding: 2rem 2rem 1rem;
   border-bottom: 1px solid ${props => props.$isDarkMode ? '#333' : '#e2e8f0'};
+  
+  @media (max-width: 768px) {
+    padding: 1rem 1rem 0.5rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 0.5rem 0.25rem;
+  }
 `;
 
 const PageTitle = styled.h2<{ $isDarkMode: boolean }>`
   font-size: 2rem;
   color: ${props => props.$isDarkMode ? '#fff' : '#1e293b'};
   margin: 0;
+  
+  @media (max-width: 768px) {
+    font-size: 1.75rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+  }
 `;
 
 const BackButton = styled.button<{ $isDarkMode: boolean }>`
@@ -1368,6 +1455,16 @@ const BackButton = styled.button<{ $isDarkMode: boolean }>`
     color: ${props => props.$isDarkMode ? '#fff' : '#1e293b'};
     border-color: ${props => props.$isDarkMode ? '#fff' : '#475569'};
     background: ${props => props.$isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'};
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
   }
 `;
 
@@ -1387,6 +1484,14 @@ const PageBody = styled.div<{ $isDarkMode: boolean }>`
   
   h3 {
     color: ${props => props.$isDarkMode ? '#fff' : '#1e293b'};
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem;
   }
 `;
 
@@ -1408,6 +1513,22 @@ const LabDescription = styled.div<{ $isDarkMode: boolean }>`
       margin-bottom: 0;
     }
   }
+  
+  @media (max-width: 768px) {
+    margin: 1.5rem auto 3rem auto;
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin: 1rem auto 2rem auto;
+    
+    p {
+      font-size: 0.95rem;
+    }
+  }
 `;
 
 const ExperimentsGrid = styled.div`
@@ -1420,13 +1541,14 @@ const ExperimentsGrid = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    padding: 0 1rem;
+    padding: 0;
     max-width: 100%;
+    width: 100%;
   }
   
   @media (max-width: 480px) {
     gap: 1rem;
-    padding: 0 0.5rem;
+    padding: 0;
     max-width: 100%;
     width: 100%;
   }
@@ -1448,11 +1570,13 @@ const ExperimentCard = styled(motion.div)<{ $isDarkMode: boolean }>`
   @media (max-width: 768px) {
     border-radius: 12px;
     width: 100%;
+    margin: 0;
   }
   
   @media (max-width: 480px) {
     border-radius: 8px;
     width: 100%;
+    margin: 0;
   }
 `;
 
@@ -1464,13 +1588,45 @@ const ExperimentVisual = styled.div<{ $isDarkMode: boolean }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   
   img {
-    width: 120%;
-    height: 120%;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     object-position: center;
-    transform: scale(1.2);
+    transition: transform 0.3s ease;
+    display: block;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+  
+  /* Loading state */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid ${props => props.$isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'};
+    border-top: 3px solid ${props => props.$isDarkMode ? '#22c55e' : '#16a34a'};
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 1;
+  }
+  
+  /* Hide loading spinner when image is loaded */
+  &.loaded::before {
+    display: none;
+  }
+  
+  @keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
   }
   
   @media (max-width: 768px) {
@@ -1484,6 +1640,14 @@ const ExperimentVisual = styled.div<{ $isDarkMode: boolean }>`
 
 const ExperimentContent = styled.div`
   padding: 1.5rem;
+  
+  @media (max-width: 768px) {
+    padding: 1.25rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
 `;
 
 const ExperimentTitle = styled.h3<{ $isDarkMode: boolean }>`
@@ -1492,6 +1656,14 @@ const ExperimentTitle = styled.h3<{ $isDarkMode: boolean }>`
   color: ${props => props.$isDarkMode ? '#fff' : '#1e293b'};
   margin: 0 0 0.75rem 0;
   line-height: 1.3;
+  
+  @media (max-width: 768px) {
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const ExperimentDescription = styled.p<{ $isDarkMode: boolean }>`
@@ -1499,6 +1671,14 @@ const ExperimentDescription = styled.p<{ $isDarkMode: boolean }>`
   color: ${props => props.$isDarkMode ? '#ccc' : '#64748b'};
   margin: 0 0 1rem 0;
   line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
 `;
 
 // Enhanced Lab Components
@@ -2235,12 +2415,22 @@ function App() {
                   >
                     <ExperimentContent>
                       <ExperimentTitle $isDarkMode={isDarkMode}>{experiment.title}</ExperimentTitle>
-                      <ExperimentDescription $isDarkMode={isDarkMode}>{experiment.description}</ExperimentDescription>
+                      {experiment.description && (
+                        <ExperimentDescription $isDarkMode={isDarkMode}>{experiment.description}</ExperimentDescription>
+                      )}
                     </ExperimentContent>
-                    <ExperimentVisual $isDarkMode={isDarkMode}>
+                    <ExperimentVisual $isDarkMode={isDarkMode} key={experiment.id}>
                       <img 
-                        src={experiment.gif} 
+                        src={experiment.gifOptimized} 
                         alt={experiment.title}
+                        loading="lazy"
+                        onLoad={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          const parent = target.parentElement;
+                          if (parent) {
+                            parent.classList.add('loaded');
+                          }
+                        }}
                       />
                     </ExperimentVisual>
                   </ExperimentCard>

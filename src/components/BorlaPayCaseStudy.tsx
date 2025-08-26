@@ -338,6 +338,207 @@ const TwoColumnLayout = styled.div`
   }
 `;
 
+// Impact Chart Styled Components
+const ImpactChartContainer = styled.div<{ $isDarkMode: boolean }>`
+  background: ${props => props.$isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)'};
+  border: 1px solid ${props => props.$isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+  border-radius: 12px;
+  padding: 2rem;
+  margin: 2rem 0;
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+  }
+`;
+
+const ImpactChartTitle = styled.h4<{ $isDarkMode: boolean }>`
+  color: ${props => props.$isDarkMode ? '#e2e8f0' : '#334155'};
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.3rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+  }
+`;
+
+const ImpactChartGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+`;
+
+const BarChartSection = styled.div`
+  @media (max-width: 768px) {
+    order: 2;
+  }
+`;
+
+const BarChartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 250px;
+  justify-content: space-between;
+  padding: 1rem 0;
+  
+  @media (max-width: 768px) {
+    height: auto;
+    gap: 0.75rem;
+    padding: 0.5rem 0;
+  }
+`;
+
+const BarChartItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+`;
+
+const BarChartLabel = styled.div<{ $isDarkMode: boolean }>`
+  width: 120px;
+  font-size: 0.9rem;
+  color: ${props => props.$isDarkMode ? '#e2e8f0' : '#334155'};
+  font-weight: 500;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+  }
+`;
+
+const BarChartBarContainer = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const BarChartBar = styled.div<{ $color: string; $width: string }>`
+  width: ${props => props.$width};
+  height: 24px;
+  background-color: ${props => props.$color};
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 0.8rem;
+  color: white;
+  padding-right: 0.5rem;
+  min-width: fit-content;
+  
+  @media (max-width: 768px) {
+    height: 20px;
+    font-size: 0.75rem;
+    padding-right: 0.4rem;
+  }
+`;
+
+const PieChartSection = styled.div`
+  @media (max-width: 768px) {
+    order: 1;
+  }
+`;
+
+const PieChartContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  margin-bottom: 2rem;
+  
+  @media (max-width: 768px) {
+    height: 150px;
+    margin-bottom: 1.5rem;
+  }
+`;
+
+const PieChart = styled.div<{ $isDarkMode: boolean }>`
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: conic-gradient(#22c55e 0deg 120deg, #16a34a 120deg 200deg, #15803d 200deg 360deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+  }
+`;
+
+const PieChartCenter = styled.div<{ $isDarkMode: boolean }>`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: ${props => props.$isDarkMode ? '#1a1a1a' : '#fff'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: ${props => props.$isDarkMode ? '#e2e8f0' : '#334155'};
+  
+  @media (max-width: 768px) {
+    width: 80px;
+    height: 80px;
+    font-size: 1rem;
+  }
+`;
+
+const PieChartLegend = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1rem;
+  text-align: center;
+  
+  @media (max-width: 768px) {
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+`;
+
+const LegendItem = styled.div``;
+
+const LegendNumber = styled.div<{ $color: string }>`
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: ${props => props.$color};
+  
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const LegendLabel = styled.div<{ $isDarkMode: boolean }>`
+  font-size: 0.8rem;
+  color: ${props => props.$isDarkMode ? '#64748b' : '#94a3b8'};
+  
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+`;
+
 const BulletList = styled.ul<{ $isDarkMode: boolean }>`
   list-style: none;
   padding: 0;
@@ -1380,128 +1581,53 @@ const BorlaPayCaseStudy: React.FC<BorlaPayCaseStudyProps> = ({ isDarkMode, onBac
             </StatCard>
           </StatsGrid>
 
-          <div style={{ 
-            background: isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)',
-            border: `1px solid ${isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'}`,
-            borderRadius: '12px',
-            padding: '2rem',
-            margin: '2rem 0'
-          }}>
-            <h4 style={{ 
-              color: isDarkMode ? '#e2e8f0' : '#334155', 
-              marginBottom: '1.5rem',
-              textAlign: 'center',
-              fontSize: '1.3rem'
-            }}>
+          <ImpactChartContainer $isDarkMode={isDarkMode}>
+            <ImpactChartTitle $isDarkMode={isDarkMode}>
               Impact by User Category
-            </h4>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
-              <div>
-                <div style={{ 
-                  display: 'flex', 
-                  flexDirection: 'column', 
-                  gap: '1rem', 
-                  height: '250px',
-                  justifyContent: 'space-between',
-                  padding: '1rem 0'
-                }}>
+            </ImpactChartTitle>
+            <ImpactChartGrid>
+              <BarChartSection>
+                <BarChartContainer>
                   {impactData.map((item, index) => (
-                    <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                      <div style={{ 
-                        width: '120px', 
-                        fontSize: '0.9rem', 
-                        color: isDarkMode ? '#e2e8f0' : '#334155',
-                        fontWeight: '500'
-                      }}>
+                    <BarChartItem key={index}>
+                      <BarChartLabel $isDarkMode={isDarkMode}>
                         {item.category}
-            </div>
-                      <div style={{ 
-                        flex: 1, 
-                        display: 'flex', 
-                        alignItems: 'center'
-                      }}>
-                        <div style={{ 
-                          width: `${(item.waste / 300) * 100}%`,
-                          height: '24px',
-                          backgroundColor: COLORS[index % COLORS.length],
-                          borderRadius: '4px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'flex-end',
-                          fontSize: '0.8rem',
-                          color: 'white',
-                          paddingRight: '0.5rem',
-                          minWidth: 'fit-content'
-                        }}>
+                      </BarChartLabel>
+                      <BarChartBarContainer>
+                        <BarChartBar 
+                          $color={COLORS[index % COLORS.length]}
+                          $width={`${(item.waste / 300) * 100}%`}
+                        >
                           {item.waste}kg
-                        </div>
-                      </div>
-                    </div>
+                        </BarChartBar>
+                      </BarChartBarContainer>
+                    </BarChartItem>
                   ))}
-                </div>
-              </div>
-              <div>
-                <div style={{ 
-                  display: 'flex', 
-                  justifyContent: 'center', 
-                  alignItems: 'center', 
-                  height: '200px',
-                  marginBottom: '2rem'
-                }}>
-                  <div style={{ 
-                    width: '150px', 
-                    height: '150px', 
-                    borderRadius: '50%', 
-                    background: 'conic-gradient(#22c55e 0deg 120deg, #16a34a 120deg 200deg, #15803d 200deg 360deg)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative'
-                  }}>
-                    <div style={{ 
-                      width: '100px', 
-                      height: '100px', 
-                      borderRadius: '50%', 
-                      background: isDarkMode ? '#1a1a1a' : '#fff',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '1.2rem',
-                      fontWeight: 'bold',
-                      color: isDarkMode ? '#e2e8f0' : '#334155'
-                    }}>
+                </BarChartContainer>
+              </BarChartSection>
+              <PieChartSection>
+                <PieChartContainer>
+                  <PieChart $isDarkMode={isDarkMode}>
+                    <PieChartCenter $isDarkMode={isDarkMode}>
                       Users
-                    </div>
-                  </div>
-                </div>
-                <div style={{ 
-                  display: 'grid', 
-                  gridTemplateColumns: 'repeat(3, 1fr)', 
-                  gap: '1rem', 
-                  marginTop: '1rem',
-                  textAlign: 'center'
-                }}>
+                    </PieChartCenter>
+                  </PieChart>
+                </PieChartContainer>
+                <PieChartLegend>
                   {impactData.map((item, index) => (
-                    <div key={index}>
-                      <div style={{ 
-                        fontSize: '1.2rem', 
-                        fontWeight: 'bold', 
-                        color: COLORS[index % COLORS.length] 
-                      }}>
+                    <LegendItem key={index}>
+                      <LegendNumber $color={COLORS[index % COLORS.length]}>
                         {item.users}
-                      </div>
-                      <div style={{ 
-                        fontSize: '0.8rem', 
-                        color: isDarkMode ? '#64748b' : '#94a3b8' 
-                      }}>
+                      </LegendNumber>
+                      <LegendLabel $isDarkMode={isDarkMode}>
                         {item.category.split(' ')[0]}
-                      </div>
-                    </div>
+                      </LegendLabel>
+                    </LegendItem>
                   ))}
-                </div>
-              </div>
-            </div>
-          </div>
+                </PieChartLegend>
+              </PieChartSection>
+            </ImpactChartGrid>
+          </ImpactChartContainer>
         </Section>
 
         {/* Key Learnings */}
