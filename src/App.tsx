@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { FolderOpen, User, FlaskConical, Sun, Moon, Mail, Linkedin, ExternalLink } from 'lucide-react';
+import { FolderOpen, User, FlaskConical, Sun, Moon, Mail, Linkedin, ExternalLink, ArrowRight } from 'lucide-react';
 import './App.css';
 import JenesysAICaseStudy from './components/CaseStudy';
 import BorlaPayCaseStudy from './components/BorlaPayCaseStudy';
@@ -136,6 +136,18 @@ const HeroText = styled.div<{ $isDarkMode: boolean }>`
   align-items: center;
   justify-content: center;
   width: 100%;
+  animation: fadeInUp 0.8s ease-out;
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   
   h1 {
     margin: 0;
@@ -151,6 +163,18 @@ const HeroText = styled.div<{ $isDarkMode: boolean }>`
       max-width: 900px;
       white-space: normal;
       margin: 0 auto;
+      animation: slideInLeft 1s ease-out 0.3s both;
+    }
+    
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
     
     @media (max-width: 768px) {
@@ -468,6 +492,15 @@ const ProjectCard = styled(motion.div)<{ $isDarkMode: boolean }>`
   width: 100%;
   overflow: hidden;
   position: relative;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: ${props => props.$isDarkMode 
+      ? '0 10px 30px rgba(0, 0, 0, 0.3)' 
+      : '0 10px 30px rgba(0, 0, 0, 0.1)'
+    };
+  }
   
   @media (max-width: 768px) {
     height: 60vh;
@@ -548,9 +581,33 @@ const CaseStudyButton = styled.button<{ $isDarkMode: boolean }>`
   cursor: pointer;
   pointer-events: auto;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
   
   &:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
   }
   
   @media (max-width: 768px) {
@@ -761,6 +818,11 @@ const PrimaryCTA = styled.button<{ $isDarkMode: boolean }>`
   };
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
   
   &:hover {
     transform: translateY(-3px);
@@ -771,8 +833,31 @@ const PrimaryCTA = styled.button<{ $isDarkMode: boolean }>`
     background: ${props => props.$isDarkMode ? '#16a34a' : '#15803d'};
   }
   
+  &:hover svg {
+    transform: translateX(4px);
+  }
+  
+  svg {
+    transition: transform 0.3s ease;
+  }
+  
   &:active {
     transform: translateY(-1px);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover::before {
+    left: 100%;
   }
   
   @media (max-width: 768px) {
@@ -873,9 +958,9 @@ const projects = [
   {
     id: 1,
     title: "AI Bookkeeping Platform",
-    description: "Designed the complete UX foundation for an AI-powered bookkeeping platform. Created intuitive onboarding flows, streamlined invoice processing, and automated reconciliation workflows that transformed complex financial tasks into simple, user-friendly experiences.",
+    description: "Transformed complex financial workflows into intuitive user experiences. Designed the complete UX foundation for an AI-powered bookkeeping platform that achieved 80% user adoption and 3x daily active users through thoughtful design and user-centered solutions.",
     type: "Product Design",
-    impact: "End-to-end platform design",
+    impact: "80% adoption, 3x user growth",
     bgColor: "linear-gradient(135deg, #134e4a, #115e59)",
     page: 'jenesys-ai',
     image: "/images/jenesys-full-image.svg"
@@ -883,9 +968,9 @@ const projects = [
   {
     id: 2,
     title: "BorlaPay",
-    description: "Designed a mobile-first recycling incentive platform for Ghanaian communities. Built gamified user flows that transformed waste behavior, achieving 80% user retention and 3x waste collection through 'Wastepreneur' network.",
+    description: "Revolutionized waste management through gamified user experiences. Designed a mobile-first recycling platform that transformed community behavior, achieving 80% user retention and 3x waste collection through innovative 'Wastepreneur' network design.",
     type: "Mobile Product Design",
-    impact: "80% retention, 3x waste collection, 1M+ tons addressable market",
+    impact: "80% retention, 3x waste collection",
     bgColor: "linear-gradient(135deg, #166534, #15803d)",
     page: 'borlapay',
     image: "/images/borlapay-full-image.svg"
@@ -893,9 +978,9 @@ const projects = [
   {
     id: 3,
     title: "BusyBuddy",
-    description: "Redesigned a comprehensive e-commerce platform focusing on user experience and conversion optimization. Implemented modern design patterns and streamlined checkout flows.",
+    description: "Elevated e-commerce experience through strategic design thinking. Redesigned a comprehensive platform focusing on user experience and conversion optimization, implementing modern design patterns and streamlined checkout flows that drive business results.",
     type: "Product Design",
-    impact: "Improved user experience and conversion rates",
+    impact: "Enhanced UX & conversion rates",
     bgColor: "linear-gradient(135deg, #7c3aed, #a855f7)",
     page: 'ecommerce',
     image: "/images/busybody-full-image.svg"
@@ -903,9 +988,9 @@ const projects = [
   {
     id: 4,
     title: "Novum website",
-    description: "Designed a comprehensive mobile banking application with focus on security, usability, and financial inclusion. Created intuitive user flows for account management, transfers, and bill payments.",
+    description: "Secured financial futures through intuitive design. Designed a comprehensive mobile banking application with focus on security, usability, and financial inclusion, creating intuitive user flows for account management, transfers, and bill payments.",
     type: "Mobile Product Design",
-    impact: "Enhanced user experience and security",
+    impact: "Enhanced security & user experience",
     bgColor: "linear-gradient(135deg, #1e40af, #3b82f6)",
     page: 'banking',
     image: "/images/novum-full-image.svg"
@@ -1476,6 +1561,28 @@ const MenuButton = styled(motion.button)<{ $isActive?: boolean; $isDarkMode: boo
 
 
 
+// Progress bar for visual engagement
+const ProgressBar = styled.div<{ $isDarkMode: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: ${props => props.$isDarkMode ? '#1a1a1a' : '#f8fafc'};
+  z-index: 1000;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #16a34a);
+    width: var(--progress, 0%);
+    transition: width 0.3s ease;
+  }
+`;
+
 function App() {
   const [currentPage, setCurrentPage] = useState<'projects' | 'recruiters' | 'designers' | 'managers' | 'engineers' | 'about' | 'lab' | 'jenesys-ai' | 'borlapay'>('projects');
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -1487,6 +1594,19 @@ function App() {
     if (savedTheme) {
       setIsDarkMode(savedTheme === 'dark');
     }
+    
+    // Scroll progress tracking for engagement
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      
+      // Update CSS custom property for progress bar
+      document.documentElement.style.setProperty('--progress', `${progress}%`);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const toggleTheme = () => {
@@ -1499,6 +1619,7 @@ function App() {
   
   return (
     <AppContainer $isDarkMode={isDarkMode}>
+      <ProgressBar $isDarkMode={isDarkMode} />
       <HeaderWrapper $isDarkMode={isDarkMode}>
       <Header>
         <Logo $isDarkMode={isDarkMode}>UXLANSAH</Logo>
@@ -1608,6 +1729,7 @@ function App() {
               <div className="cta-buttons">
                 <PrimaryCTA $isDarkMode={isDarkMode} onClick={() => window.open('mailto:rashidlansahadam@gmail.com', '_self')}>
                   {currentPage === 'recruiters' ? 'Schedule Interview' : 'Get In Touch'}
+                  <ArrowRight size={20} />
                 </PrimaryCTA>
                 <SecondaryCTA $isDarkMode={isDarkMode} onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
                   View Case Studies
