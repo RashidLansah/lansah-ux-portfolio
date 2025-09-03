@@ -109,20 +109,22 @@ const HeroContent = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 1000px;
-  margin-top: 2rem;
-  min-height: 300px;
+  margin-top: 1rem;
+  min-height: 250px;
   justify-content: center;
   
   @media (max-width: 768px) {
-    min-height: 250px;
-    margin-top: 1rem;
+    min-height: 200px;
+    margin-top: 0.5rem;
+    gap: 1rem;
   }
   
   @media (max-width: 480px) {
-    min-height: 250px;
-    margin-top: 0.5rem;
+    min-height: 180px;
+    margin-top: 0.25rem;
+    gap: 0.75rem;
   }
 `;
 
@@ -202,102 +204,9 @@ const HeroSubtitle = styled.div<{ $isDarkMode: boolean }>`
   }
 `;
 
-const QuickStats = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin: 2rem 0;
-  flex-wrap: wrap;
-  
-  @media (max-width: 768px) {
-    gap: 2rem;
-  }
-  
-  @media (max-width: 480px) {
-    gap: 1.5rem;
-    flex-direction: column;
-    align-items: center;
-  }
-`;
 
-const StatItem = styled.div<{ $isDarkMode: boolean }>`
-  text-align: center;
-  
-  .number {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: ${props => props.$isDarkMode ? '#fff' : '#000'};
-    line-height: 1;
-    margin-bottom: 0.5rem;
-  }
-  
-  .label {
-    font-size: 0.9rem;
-    color: ${props => props.$isDarkMode ? '#ccc' : '#666'};
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  @media (max-width: 768px) {
-    .number {
-      font-size: 2rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .number {
-      font-size: 1.75rem;
-    }
-  }
-`;
 
-const SocialProof = styled.div<{ $isDarkMode: boolean }>`
-  text-align: center;
-  margin: 2rem 0;
-  
-  .label {
-    font-size: 0.9rem;
-    color: ${props => props.$isDarkMode ? '#ccc' : '#666'};
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  .logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .company-logo {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: ${props => props.$isDarkMode ? '#fff' : '#000'};
-    padding: 0.5rem 1rem;
-    border: 1px solid ${props => props.$isDarkMode ? '#333' : '#e2e8f0'};
-    border-radius: 6px;
-    background: ${props => props.$isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.02)'};
-  }
-  
-  @media (max-width: 768px) {
-    .logos {
-      gap: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .logos {
-      gap: 1rem;
-    }
-    
-    .company-logo {
-      font-size: 1rem;
-      padding: 0.4rem 0.8rem;
-    }
-  }
-`;
+
 
 const TabNavigation = styled.div`
   display: flex;
@@ -435,140 +344,7 @@ const Highlight = styled.span`
 
 
 
-const SkillsMarquee = styled.div`
-  padding: 1rem 0;
-  margin: -2rem 0 2rem;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-  z-index: 10;
-`;
 
-const SkillsSection = styled.div<{ $isDarkMode: boolean }>`
-  padding: 4rem 0;
-  background: ${props => props.$isDarkMode ? '#000' : '#fff'};
-  
-  @media (max-width: 768px) {
-    padding: 3rem 0;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 2rem 0;
-  }
-`;
-
-const SkillsHeader = styled.div<{ $isDarkMode: boolean }>`
-  text-align: center;
-  margin-bottom: 3rem;
-  
-  h2 {
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: ${props => props.$isDarkMode ? '#fff' : '#000'};
-    margin: 0 0 1rem 0;
-  }
-  
-  p {
-    font-size: 1.2rem;
-    color: ${props => props.$isDarkMode ? '#ccc' : '#666'};
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  
-  @media (max-width: 768px) {
-    h2 {
-      font-size: 2rem;
-    }
-    
-    p {
-      font-size: 1.1rem;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    h2 {
-      font-size: 1.75rem;
-    }
-    
-    p {
-      font-size: 1rem;
-    }
-  }
-`;
-
-const SkillsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    padding: 0 1rem;
-  }
-`;
-
-const SkillCategory = styled.div<{ $isDarkMode: boolean }>`
-  background: ${props => props.$isDarkMode ? '#1a1a1a' : '#f8fafc'};
-  border: 1px solid ${props => props.$isDarkMode ? '#333' : '#e2e8f0'};
-  border-radius: 12px;
-  padding: 2rem;
-  
-  h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: ${props => props.$isDarkMode ? '#fff' : '#000'};
-    margin: 0 0 1rem 0;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  li {
-    color: ${props => props.$isDarkMode ? '#ccc' : '#666'};
-    margin-bottom: 0.5rem;
-    padding-left: 1.5rem;
-    position: relative;
-    font-size: 0.95rem;
-    line-height: 1.4;
-    
-    &:before {
-      content: "•";
-      color: ${props => props.$isDarkMode ? '#3b82f6' : '#3b82f6'};
-      font-size: 0.9rem;
-      position: absolute;
-      left: 0;
-    }
-  }
-  
-  @media (max-width: 1024px) {
-    padding: 1.75rem;
-    
-    li {
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-    
-    li {
-      font-size: 0.95rem;
-    }
-  }
-`;
 
 /* const CertificationsMarquee = styled.div<{ $isDarkMode: boolean }>`
   padding: 2rem 0;
@@ -613,110 +389,7 @@ const CertificationItem = styled.div<{ $isDarkMode: boolean }>`
 
 
 
-const MarqueeContent = styled.div`
-  display: inline-block;
-  animation: scroll 30s linear infinite;
-  
-  @keyframes scroll {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
-`;
 
-const SkillItem = styled.span`
-  color: #888;
-  font-size: 1rem;
-  font-weight: 400;
-  margin-right: 4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  transition: all 0.3s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  
-  &:hover {
-    color: #fff;
-    transform: translateY(-2px);
-  }
-`;
-
-const SkillIcon = styled.span`
-  width: 20px;
-  height: 20px;
-  display: inline-block;
-  position: relative;
-  margin-right: 0.5rem;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 2px solid #888;
-    border-radius: 50%;
-    animation: drawCircle 3s ease-in-out infinite;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 8px;
-    height: 8px;
-    background: #888;
-    border-radius: 50%;
-    animation: fillDot 3s ease-in-out infinite;
-    animation-delay: 1.5s;
-  }
-  
-  @keyframes drawCircle {
-    0% {
-      stroke-dasharray: 0 100;
-      opacity: 0;
-    }
-    50% {
-      stroke-dasharray: 50 100;
-      opacity: 1;
-    }
-    100% {
-      stroke-dasharray: 100 100;
-      opacity: 0.8;
-    }
-  }
-  
-  @keyframes fillDot {
-    0% {
-      transform: translate(-50%, -50%) scale(0);
-      opacity: 0;
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(1.2);
-      opacity: 1;
-    }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.8;
-    }
-  }
-  
-  /* Different icon styles */
-  &.palette::before { border-radius: 20%; }
-  &.search::before { border-radius: 50%; border-style: dashed; }
-  &.mobile::before { border-radius: 15%; }
-  &.target::before { border-style: dotted; }
-  &.lightning::before { border-radius: 0; transform: rotate(45deg); }
-  &.brain::before { border-radius: 40% 60% 60% 40%; }
-  &.chart::before { border-radius: 10%; }
-  &.rocket::before { border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
-  &.bulb::before { border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; }
-`;
 
 const ProjectsSection = styled.section`
   padding: 2rem 0;
@@ -743,219 +416,159 @@ const ProjectsTitle = styled.div<{ $isDarkMode: boolean }>`
 
 
 const ProjectsGrid = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 4rem;
-  width: 95vw;
-  max-width: none;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 2rem;
   
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    width: 100vw;
-    max-width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 1.5rem;
   }
   
   @media (max-width: 480px) {
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+  }
+`;
+
+const SideBySideGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 2rem;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
     gap: 1.5rem;
-    width: 100vw;
-    max-width: 100%;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
   }
 `;
 
 const ProjectCard = styled(motion.div)<{ $isDarkMode: boolean }>`
-  background: ${props => props.$isDarkMode ? 'linear-gradient(135deg, #1a1a1a, #2a2a2a)' : 'linear-gradient(135deg, #f8fafc, #f1f5f9)'};
-  border: 1px solid ${props => props.$isDarkMode ? '#404040' : '#e2e8f0'};
-  border-radius: 16px;
+  background: ${props => props.$isDarkMode ? '#1a1a1a' : '#fff'};
+  border: 1px solid ${props => props.$isDarkMode ? '#333' : '#e2e8f0'};
+  border-radius: 12px;
   padding: 0;
   cursor: pointer;
-  transition: all 0.4s ease;
-  height: 750px;
-  display: flex;
-  flex-direction: column;
+  height: 100vh;
+  width: 100%;
   overflow: hidden;
   position: relative;
   
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  
-  &:hover {
-    border-color: ${props => props.$isDarkMode ? '#555' : '#cbd5e1'};
-    transform: translateY(-8px);
-    box-shadow: ${props => props.$isDarkMode ? '0 20px 40px rgba(0, 0, 0, 0.4)' : '0 20px 40px rgba(0, 0, 0, 0.15)'};
-    
-    &::before {
-      opacity: 1;
-    }
-  }
-  
-  /* Special styling for Jenesys AI card */
-  &[data-project="jenesys-ai"] {
-    border: 2px solid ${props => props.$isDarkMode ? '#06b6d4' : '#06b6d4'};
-    box-shadow: ${props => props.$isDarkMode 
-      ? '0 0 20px rgba(6, 182, 212, 0.3), 0 8px 32px rgba(0, 0, 0, 0.3)' 
-      : '0 0 20px rgba(6, 182, 212, 0.2), 0 8px 32px rgba(0, 0, 0, 0.1)'
-    };
-    
-    &:hover {
-      border-color: ${props => props.$isDarkMode ? '#22d3ee' : '#0891b2'};
-      box-shadow: ${props => props.$isDarkMode 
-        ? '0 0 30px rgba(6, 182, 212, 0.4), 0 20px 40px rgba(0, 0, 0, 0.4)' 
-        : '0 0 30px rgba(6, 182, 212, 0.3), 0 20px 40px rgba(0, 0, 0, 0.15)'
-      };
-    }
-  }
-  
   @media (max-width: 768px) {
-    height: 700px;
-    width: 100%;
+    height: 60vh;
+    border-radius: 8px;
   }
   
   @media (max-width: 480px) {
-    height: 680px;
-    border-radius: 12px;
-    width: 100%;
+    height: 50vh;
+    border-radius: 6px;
   }
 `;
 
 
 
-const ProjectTitle = styled.h3<{ $isDarkMode: boolean }>`
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
-  color: ${props => props.$isDarkMode ? '#fff' : '#1e293b'};
-  font-weight: 600;
-  line-height: 1.3;
-`;
 
-const ProjectDescription = styled.p<{ $isDarkMode: boolean }>`
-  color: ${props => props.$isDarkMode ? '#ccc' : '#64748b'};
-  line-height: 1.6;
-  margin-bottom: 1.5rem;
-  font-size: 1.1rem;
-`;
-
-const ProjectType = styled.span`
-  background: rgba(139, 92, 246, 0.1);
-  color: #a78bfa;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  font-weight: 500;
-  align-self: flex-start;
-  border: 1px solid rgba(139, 92, 246, 0.2);
-`;
-
-const ProjectContent = styled.div`
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-    width: 100%;
-  flex: 1;
-  
-  @media (max-width: 768px) {
-    padding: 1.5rem;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 1rem;
-  }
-`;
 
 const ProjectImage = styled.div<{ $bgColor?: string }>`
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(168, 85, 247, 0.08));
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
   position: relative;
-  border-top: 1px solid rgba(139, 92, 246, 0.1);
-  min-height: 160px;
- 
   
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
-    transition: transform 0.3s ease;
   }
-  
-  &:hover img {
-    transform: scale(1.05);
-  }
+`;
+
+const ProjectOverlay = styled.div<{ $isDarkMode: boolean }>`
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  pointer-events: none;
   
   @media (max-width: 768px) {
-    min-height: 140px;
-    padding: 1rem;
+    top: 1.5rem;
+    gap: 1.25rem;
   }
   
   @media (max-width: 480px) {
-    min-height: 120px;
-    padding: 0.75rem;
+    top: 1rem;
+    gap: 1rem;
   }
 `;
 
-const ViewCaseStudyButton = styled.button`
-  background: rgba(6, 182, 212, 0.08);
-  color: #06b6d4;
-  border: 1px solid rgba(6, 182, 212, 0.2);
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  align-self: flex-start;
-  margin-top: 1.5rem;
-  pointer-events: none;
+const ProjectTitle = styled.h3<{ $isDarkMode: boolean }>`
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
   
-  /* Special styling for Jenesys AI button */
-  .jenesys-ai & {
-    background: rgba(6, 182, 212, 0.15);
-    border-color: rgba(6, 182, 212, 0.4);
-    color: #0891b2;
-    font-weight: 600;
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
+`;
+
+const CaseStudyButton = styled.button<{ $isDarkMode: boolean }>`
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 6px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  pointer-events: auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
   
   &:hover {
-    background: rgba(6, 182, 212, 0.15);
-    border-color: #06b6d4;
-    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 `;
 
 
 
-const ProjectMetrics = styled.div`
-  color: #10b981;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin: 1rem 0;
-  padding: 0.75rem 0;
-  border-left: 3px solid #10b981;
-  padding-left: 1rem;
-  background: rgba(16, 185, 129, 0.08);
-  border-radius: 0 8px 8px 0;
-  backdrop-filter: blur(10px);
-`;
+
+
+
 
 // Other Works Section Components
 const OtherWorksSection = styled.section`
@@ -1110,13 +723,7 @@ const ContactButtons = styled.div`
 
 const HeroCTA = styled.div<{ $isDarkMode: boolean }>`
   text-align: center;
-  margin: 3rem 0;
-  
-  .cta-text {
-    font-size: 1.1rem;
-    color: ${props => props.$isDarkMode ? '#ccc' : '#666'};
-    margin-bottom: 1.5rem;
-  }
+  margin: 2rem 0;
   
   .cta-buttons {
     display: flex;
@@ -1126,14 +733,11 @@ const HeroCTA = styled.div<{ $isDarkMode: boolean }>`
   }
   
   @media (max-width: 768px) {
-    margin: 2rem 0;
-    
-    .cta-text {
-      font-size: 1rem;
-    }
+    margin: 1.5rem 0;
   }
   
   @media (max-width: 480px) {
+    margin: 1rem 0;
     .cta-buttons {
       flex-direction: column;
       align-items: center;
@@ -1268,23 +872,43 @@ const CopyrightText = styled.div<{ $isDarkMode: boolean }>`
 const projects = [
   {
     id: 1,
-    title: "AI Bookkeeping Platform - From MVP to $1M ARR",
-    description: "As founding Product Designer at Jenesys AI, I built the complete UX foundation for an AI-powered bookkeeping platform. Designed onboarding, invoice processing, and reconciliation workflows that achieved 80% adoption rate and 3x daily active users.",
+    title: "AI Bookkeeping Platform",
+    description: "Designed the complete UX foundation for an AI-powered bookkeeping platform. Created intuitive onboarding flows, streamlined invoice processing, and automated reconciliation workflows that transformed complex financial tasks into simple, user-friendly experiences.",
     type: "Product Design",
-    impact: "$1M ARR, 80% adoption, 3x DAU growth",
+    impact: "End-to-end platform design",
     bgColor: "linear-gradient(135deg, #134e4a, #115e59)",
     page: 'jenesys-ai',
-    image: "/images/case-studies/jenesys-ai-hero.png"
+    image: "/images/jenesys-full-image.svg"
   },
   {
     id: 2,
-    title: "BorlaPay - Reward-Based Recycling Platform",
+    title: "BorlaPay",
     description: "Designed a mobile-first recycling incentive platform for Ghanaian communities. Built gamified user flows that transformed waste behavior, achieving 80% user retention and 3x waste collection through 'Wastepreneur' network.",
     type: "Mobile Product Design",
     impact: "80% retention, 3x waste collection, 1M+ tons addressable market",
     bgColor: "linear-gradient(135deg, #166534, #15803d)",
     page: 'borlapay',
-    image: "/images/case-studies/borlapay-hero.png"
+    image: "/images/borlapay-full-image.svg"
+  },
+  {
+    id: 3,
+    title: "BusyBuddy",
+    description: "Redesigned a comprehensive e-commerce platform focusing on user experience and conversion optimization. Implemented modern design patterns and streamlined checkout flows.",
+    type: "Product Design",
+    impact: "Improved user experience and conversion rates",
+    bgColor: "linear-gradient(135deg, #7c3aed, #a855f7)",
+    page: 'ecommerce',
+    image: "/images/busybody-full-image.svg"
+  },
+  {
+    id: 4,
+    title: "Novum website",
+    description: "Designed a comprehensive mobile banking application with focus on security, usability, and financial inclusion. Created intuitive user flows for account management, transfers, and bill payments.",
+    type: "Mobile Product Design",
+    impact: "Enhanced user experience and security",
+    bgColor: "linear-gradient(135deg, #1e40af, #3b82f6)",
+    page: 'banking',
+    image: "/images/novum-full-image.svg"
   }
 ];
 
@@ -1299,7 +923,7 @@ const otherWorks = [
   {
     id: 2,
     title: "Design x Sales: Why I Joined Demo Calls as a Product Designer",
-    description: "At Jenesys AI, we're building tools to automate bookkeeping. Like most design teams in SaaS, our job is to make workflows easier.",
+    description: "Exploring how design and sales collaboration can drive better product outcomes. This article shares insights on bridging the gap between design thinking and business goals.",
     category: "Product Strategy",
     url: "https://medium.com/design-bootcamp/design-x-sales-why-i-joined-demo-calls-as-a-product-designer-9db4a702937b"
   },
@@ -1959,7 +1583,7 @@ function App() {
             <HeroSubtitle $isDarkMode={isDarkMode}>
               <p>
                 {currentPage === 'recruiters' && (
-                  "Product Designer with 7+ years experience at VC-backed AI companies. Delivered 80% adoption rates, 3x user growth, and $2M+ revenue impact. Expert in AI/ML products, B2B SaaS, and mobile app design. Available for full-time roles."
+                  "Product Designer building AI/ML products, B2B SaaS platforms, and mobile applications. Expert in user-centered design, design systems, and delivering measurable business impact."
                 )}
                 {currentPage === 'projects' && (
                   "Product Designer focused on AI/ML products, B2B SaaS, and enterprise solutions. I turn complex problems into simple, impactful user experiences that drive measurable business results."
@@ -1976,45 +1600,13 @@ function App() {
               </p>
             </HeroSubtitle>
             
-            <QuickStats>
-              <StatItem $isDarkMode={isDarkMode}>
-                <div className="number">7+</div>
-                <div className="label">Years Experience</div>
-              </StatItem>
-              <StatItem $isDarkMode={isDarkMode}>
-                <div className="number">80%</div>
-                <div className="label">Adoption Rate</div>
-              </StatItem>
-              <StatItem $isDarkMode={isDarkMode}>
-                <div className="number">$2M+</div>
-                <div className="label">Revenue Impact</div>
-              </StatItem>
-              <StatItem $isDarkMode={isDarkMode}>
-                <div className="number">3x</div>
-                <div className="label">User Growth</div>
-              </StatItem>
-            </QuickStats>
+
             
-            <SocialProof $isDarkMode={isDarkMode}>
-              <div className="label">Experience at</div>
-              <div className="logos">
-                <div className="company-logo">Jenesys AI</div>
-                <div className="company-logo">Upwork</div>
-                <div className="company-logo">EventIgnite</div>
-                <div className="company-logo">dbaza health</div>
-              </div>
-            </SocialProof>
+
             
             <HeroCTA $isDarkMode={isDarkMode}>
-              <div className="cta-text">
-                {currentPage === 'recruiters' && "Ready to hire a designer who delivers results?"}
-                {currentPage === 'projects' && "Let's work together on your next project"}
-                {currentPage === 'designers' && "Ready to collaborate and create something amazing?"}
-                {currentPage === 'managers' && "Need a designer who understands your business goals?"}
-                {currentPage === 'engineers' && "Ready to build something incredible together?"}
-              </div>
               <div className="cta-buttons">
-                <PrimaryCTA $isDarkMode={isDarkMode}>
+                <PrimaryCTA $isDarkMode={isDarkMode} onClick={() => window.open('mailto:rashidlansahadam@gmail.com', '_self')}>
                   {currentPage === 'recruiters' ? 'Schedule Interview' : 'Get In Touch'}
                 </PrimaryCTA>
                 <SecondaryCTA $isDarkMode={isDarkMode} onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
@@ -2025,80 +1617,7 @@ function App() {
           </HeroContent>
         </Hero>
 
-        <SkillsMarquee>
-          <MarqueeContent>
-            <SkillItem><SkillIcon className="palette"></SkillIcon> UI/UX Design</SkillItem>
-            <SkillItem><SkillIcon className="search"></SkillIcon> User Research</SkillItem>
-            <SkillItem><SkillIcon className="mobile"></SkillIcon> Product Design</SkillItem>
-            <SkillItem><SkillIcon className="target"></SkillIcon> Design Strategy</SkillItem>
-            <SkillItem><SkillIcon className="lightning"></SkillIcon> Prototyping</SkillItem>
-            <SkillItem><SkillIcon className="brain"></SkillIcon> Design Thinking</SkillItem>
-            <SkillItem><SkillIcon className="chart"></SkillIcon> Data-Driven Design</SkillItem>
-            <SkillItem><SkillIcon className="rocket"></SkillIcon> Growth Design</SkillItem>
-            <SkillItem><SkillIcon className="bulb"></SkillIcon> Innovation</SkillItem>
-            <SkillItem><SkillIcon className="palette"></SkillIcon> UI/UX Design</SkillItem>
-            <SkillItem><SkillIcon className="search"></SkillIcon> User Research</SkillItem>
-            <SkillItem><SkillIcon className="mobile"></SkillIcon> Product Design</SkillItem>
-            <SkillItem><SkillIcon className="target"></SkillIcon> Design Strategy</SkillItem>
-            <SkillItem><SkillIcon className="lightning"></SkillIcon> Prototyping</SkillItem>
-            <SkillItem><SkillIcon className="brain"></SkillIcon> Design Thinking</SkillItem>
-            <SkillItem><SkillIcon className="chart"></SkillIcon> Data-Driven Design</SkillItem>
-            <SkillItem><SkillIcon className="rocket"></SkillIcon> Growth Design</SkillItem>
-            <SkillItem><SkillIcon className="bulb"></SkillIcon> Innovation</SkillItem>
-          </MarqueeContent>
-        </SkillsMarquee>
 
-        <SkillsSection $isDarkMode={isDarkMode}>
-          <SkillsHeader $isDarkMode={isDarkMode}>
-            <h2>Skills & Expertise</h2>
-            <p>Comprehensive product design skills honed over 7+ years building AI/ML products, B2B SaaS platforms, mobile apps, and enterprise solutions across web and mobile platforms</p>
-          </SkillsHeader>
-          
-          <SkillsGrid>
-            <SkillCategory $isDarkMode={isDarkMode}>
-              <h3>Design Process & Tools</h3>
-              <ul>
-                <li>User Research & Usability Testing</li>
-                <li>Design Thinking & Strategy</li>
-                <li>Information Architecture</li>
-                <li>Wireframing & Prototyping</li>
-                <li>Design Systems & Component Libraries</li>
-                <li>Figma, Sketch, Adobe Creative Suite</li>
-                <li>Framer, Principle, InVision</li>
-                <li>HTML/CSS, JavaScript Basics</li>
-                <li>Vibe Coding</li>
-              </ul>
-            </SkillCategory>
-            
-            <SkillCategory $isDarkMode={isDarkMode}>
-              <h3>Technical & Mobile Expertise</h3>
-              <ul>
-                <li>Responsive & Mobile-First Design</li>
-                <li>Native iOS/Android App Design</li>
-                <li>Cross-platform Design Systems</li>
-                <li>Mobile UX Patterns & Gestures</li>
-                <li>Progressive Web Apps (PWA)</li>
-                <li>Design Token Systems</li>
-                <li>iOS/Android Design Guidelines</li>
-                <li>Mobile Performance Optimization</li>
-              </ul>
-            </SkillCategory>
-            
-            <SkillCategory $isDarkMode={isDarkMode}>
-              <h3>Domain & Leadership</h3>
-              <ul>
-                <li>AI/ML Product Design</li>
-                <li>B2B SaaS & Enterprise UX</li>
-                <li>Financial Technology</li>
-                <li>E-commerce & Conversion</li>
-                <li>Design Team Leadership</li>
-                <li>User Journey Mapping</li>
-                <li>Cross-functional Collaboration</li>
-                <li>Design Process Optimization</li>
-              </ul>
-            </SkillCategory>
-          </SkillsGrid>
-        </SkillsSection>
 
         {/* <CertificationsMarquee $isDarkMode={isDarkMode}>
           <CertificationsTrack>
@@ -2178,37 +1697,126 @@ function App() {
 
         <ProjectsSection id="projects">
           <ProjectsTitle $isDarkMode={isDarkMode}>Portfolio</ProjectsTitle>
+          
+          {/* Jenesys - Full Width */}
           <ProjectsGrid>
-            {projects.map((project) => (
+            {projects.slice(0, 1).map((project) => (
               <ProjectCard
                 key={project.id}
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.98 }}
                 $isDarkMode={isDarkMode}
+                data-project={project.page}
                 onClick={() => setCurrentPage(project.page as any)}
                 style={{ cursor: 'pointer' }}
-                data-project={project.page}
               >
-                <ProjectContent>
-                  <div>
-                    <ProjectTitle $isDarkMode={isDarkMode}>{project.title}</ProjectTitle>
-                    <ProjectDescription $isDarkMode={isDarkMode}>{project.description}</ProjectDescription>
-                    <ProjectMetrics>{project.impact}</ProjectMetrics>
-                    <ProjectType>{project.type}</ProjectType>
-                  </div>
-                  <ViewCaseStudyButton>Explore Case Study →</ViewCaseStudyButton>
-                </ProjectContent>
-                
                 <ProjectImage $bgColor={project.bgColor}>
                   <img 
                     src={project.image || "/images/project-preview.png"} 
                     alt={`${project.title} Preview`} 
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => {
                       console.log('Image failed to load:', project.image);
                       e.currentTarget.src = "/images/project-preview.png";
                     }}
                   />
+                  <ProjectOverlay $isDarkMode={isDarkMode}>
+                    <ProjectTitle $isDarkMode={isDarkMode}>
+                      {project.title}
+                    </ProjectTitle>
+                    <CaseStudyButton 
+                      $isDarkMode={isDarkMode}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentPage(project.page as any);
+                      }}
+                    >
+                      View Case Study
+                    </CaseStudyButton>
+                  </ProjectOverlay>
+                </ProjectImage>
+              </ProjectCard>
+            ))}
+          </ProjectsGrid>
+
+          {/* BorlaPay & BusyBuddy - Side by Side */}
+          <SideBySideGrid>
+            {projects.slice(1, 3).map((project) => (
+              <ProjectCard
+                key={project.id}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                $isDarkMode={isDarkMode}
+                data-project={project.page}
+                onClick={() => setCurrentPage(project.page as any)}
+                style={{ cursor: 'pointer' }}
+              >
+                <ProjectImage $bgColor={project.bgColor}>
+                  <img 
+                    src={project.image || "/images/project-preview.png"} 
+                    alt={`${project.title} Preview`} 
+                    onError={(e) => {
+                      console.log('Image failed to load:', project.image);
+                      e.currentTarget.src = "/images/project-preview.png";
+                    }}
+                  />
+                  <ProjectOverlay $isDarkMode={isDarkMode}>
+                    <ProjectTitle $isDarkMode={isDarkMode}>
+                      {project.title}
+                    </ProjectTitle>
+                    <CaseStudyButton 
+                      $isDarkMode={isDarkMode}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        if (project.page === 'ecommerce') {
+                          window.open('https://www.figma.com/design/WVp6Cjenyxnw6qCxFE5eAb/BusyBuddy?node-id=0-1', '_blank');
+                        } else {
+                          setCurrentPage(project.page as any);
+                        }
+                      }}
+                    >
+                      View Case Study
+                    </CaseStudyButton>
+                  </ProjectOverlay>
+                </ProjectImage>
+              </ProjectCard>
+            ))}
+          </SideBySideGrid>
+
+          {/* Mobile Banking App - Full Width */}
+          <ProjectsGrid>
+            {projects.slice(3, 4).map((project) => (
+              <ProjectCard
+                key={project.id}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                $isDarkMode={isDarkMode}
+                data-project={project.page}
+                onClick={() => setCurrentPage(project.page as any)}
+                style={{ cursor: 'pointer' }}
+              >
+                <ProjectImage $bgColor={project.bgColor}>
+                  <img 
+                    src={project.image || "/images/project-preview.png"} 
+                    alt={`${project.title} Preview`} 
+                    onError={(e) => {
+                      console.log('Image failed to load:', project.image);
+                      e.currentTarget.src = "/images/project-preview.png";
+                    }}
+                  />
+                  <ProjectOverlay $isDarkMode={isDarkMode}>
+                    <ProjectTitle $isDarkMode={isDarkMode}>
+                      {project.title}
+                    </ProjectTitle>
+                    <CaseStudyButton 
+                      $isDarkMode={isDarkMode}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentPage(project.page as any);
+                      }}
+                    >
+                      View Case Study
+                    </CaseStudyButton>
+                  </ProjectOverlay>
                 </ProjectImage>
               </ProjectCard>
             ))}
@@ -2237,19 +1845,7 @@ function App() {
           </ArticlesGrid>
         </OtherWorksSection>
 
-        <HeroCTA $isDarkMode={isDarkMode}>
-          <div className="cta-text">
-            Ready to work with a designer who delivers measurable business impact?
-          </div>
-          <div className="cta-buttons">
-            <PrimaryCTA $isDarkMode={isDarkMode}>
-              Schedule a Call
-            </PrimaryCTA>
-            <SecondaryCTA $isDarkMode={isDarkMode} onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
-              View Full Case Studies
-            </SecondaryCTA>
-          </div>
-        </HeroCTA>
+
 
         <Footer $isDarkMode={isDarkMode}>
           <FooterContent>
