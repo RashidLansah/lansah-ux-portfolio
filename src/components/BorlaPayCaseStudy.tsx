@@ -568,14 +568,14 @@ interface BorlaPayCaseStudyProps {
 
 const BorlaPayCaseStudy: React.FC<BorlaPayCaseStudyProps> = ({ isDarkMode, onBack }) => {
   // Chart data
-  const wastepreneurData = [
-    { month: 'Jan', individual: 45, wastepreneur: 120 },
-    { month: 'Feb', individual: 52, wastepreneur: 135 },
-    { month: 'Mar', individual: 48, wastepreneur: 150 },
-    { month: 'Apr', individual: 55, wastepreneur: 180 },
-    { month: 'May', individual: 60, wastepreneur: 200 },
-    { month: 'Jun', individual: 65, wastepreneur: 225 },
-  ];
+  // const wastepreneurData = [
+  //   { month: 'Jan', individual: 45, wastepreneur: 120 },
+  //   { month: 'Feb', individual: 52, wastepreneur: 135 },
+  //   { month: 'Mar', individual: 48, wastepreneur: 150 },
+  //   { month: 'Apr', individual: 55, wastepreneur: 180 },
+  //   { month: 'May', individual: 60, wastepreneur: 200 },
+  //   { month: 'Jun', individual: 65, wastepreneur: 225 },
+  // ];
 
   const beforeAfterData = [
     { metric: 'Onboarding Time', before: 85, after: 45 },

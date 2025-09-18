@@ -968,11 +968,11 @@ const CopyrightText = styled.div<{ $isDarkMode: boolean }>`
 
 
 // Helper function for optimized image loading
-const getOptimizedImageSrc = (originalSrc: string) => {
-  // For now, return original src. In production, you'd implement WebP conversion
-  // and return different formats based on browser support
-  return originalSrc;
-};
+// const getOptimizedImageSrc = (originalSrc: string) => {
+//   // For now, return original src. In production, you'd implement WebP conversion
+//   // and return different formats based on browser support
+//   return originalSrc;
+// };
 
 // Data
 const projects = [
