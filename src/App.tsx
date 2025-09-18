@@ -130,6 +130,8 @@ const HeroContent = styled.div`
 
 
 
+
+
 const HeroText = styled.div<{ $isDarkMode: boolean }>`
   min-height: 160px;
   display: flex;
@@ -530,6 +532,18 @@ const ProjectImage = styled.div<{ $bgColor?: string }>`
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
+    /* Performance optimizations */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    /* Smooth loading */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    
+    &.loaded {
+      opacity: 1;
+    }
   }
 `;
 
@@ -953,6 +967,13 @@ const CopyrightText = styled.div<{ $isDarkMode: boolean }>`
 
 
 
+// Helper function for optimized image loading
+const getOptimizedImageSrc = (originalSrc: string) => {
+  // For now, return original src. In production, you'd implement WebP conversion
+  // and return different formats based on browser support
+  return originalSrc;
+};
+
 // Data
 const projects = [
   {
@@ -994,6 +1015,17 @@ const projects = [
     bgColor: "linear-gradient(135deg, #1e40af, #3b82f6)",
     page: 'banking',
     image: "/images/novum-full-image.svg"
+  },
+  {
+    id: 5,
+    title: "Tikiti",
+    description: "Revolutionized event discovery through intuitive mobile design. Created a comprehensive event management platform that connects communities through seamless event discovery, ticket management, and social engagement features.",
+    type: "Mobile Product Design",
+    impact: "Enhanced event discovery & engagement",
+    bgColor: "linear-gradient(135deg, #ea580c, #f97316)",
+    page: 'tikiti',
+    image: "/images/tikiti-app-preview.svg",
+    url: "https://gettikiti.com/landing"
   }
 ];
 
@@ -1620,6 +1652,8 @@ function App() {
   return (
     <AppContainer $isDarkMode={isDarkMode}>
       <ProgressBar $isDarkMode={isDarkMode} />
+      {/* Preload critical images */}
+      <link rel="preload" as="image" href="/images/jenesys-full-image.svg" />
       <HeaderWrapper $isDarkMode={isDarkMode}>
       <Header>
         <Logo $isDarkMode={isDarkMode}>UXLANSAH</Logo>
@@ -1680,22 +1714,22 @@ function App() {
                 )}
                 {currentPage === 'recruiters' && (
                   <>
-                    <div className="line1">Looking for a <Highlight>designer</Highlight> who can deliver <Highlight>exceptional user experiences</Highlight> and drive <Highlight>business results</Highlight>?</div>
+                    <div className="line1">I'm a <Highlight>Product Designer</Highlight> who delivers <Highlight>exceptional user experiences</Highlight> and drives <Highlight>measurable business results</Highlight>.</div>
                   </>
                 )}
                 {currentPage === 'designers' && (
                   <>
-                    <div className="line1">Ready to collaborate with a <Highlight>designer</Highlight> who understands the <Highlight>craft</Highlight> and pushes <Highlight>creative boundaries</Highlight>?</div>
+                    <div className="line1">I'm a <Highlight>Product Designer</Highlight> who understands the <Highlight>craft</Highlight> and loves pushing <Highlight>creative boundaries</Highlight>.</div>
                   </>
                 )}
                 {currentPage === 'managers' && (
                   <>
-                    <div className="line1">Need a <Highlight>designer</Highlight> who speaks your <Highlight>language</Highlight> and translates <Highlight>business goals</Highlight> into intuitive user experiences?</div>
+                    <div className="line1">I'm a <Highlight>Product Designer</Highlight> who speaks your <Highlight>language</Highlight> and translates <Highlight>business goals</Highlight> into intuitive user experiences.</div>
                   </>
                 )}
                 {currentPage === 'engineers' && (
                   <>
-                    <div className="line1">Want to build with a <Highlight>designer</Highlight> who understands <Highlight>technical constraints</Highlight> and designs for <Highlight>scale</Highlight>?</div>
+                    <div className="line1">I'm a <Highlight>Product Designer</Highlight> who understands <Highlight>technical constraints</Highlight> and designs for <Highlight>scale</Highlight>.</div>
                   </>
                 )}
               </h1>
@@ -1836,6 +1870,11 @@ function App() {
                   <img 
                     src={project.image || "/images/project-preview.png"} 
                     alt={`${project.title} Preview`} 
+                    loading="eager"
+                    decoding="async"
+                    onLoad={(e) => {
+                      e.currentTarget.classList.add('loaded');
+                    }}
                     onError={(e) => {
                       console.log('Image failed to load:', project.image);
                       e.currentTarget.src = "/images/project-preview.png";
@@ -1876,6 +1915,11 @@ function App() {
                   <img 
                     src={project.image || "/images/project-preview.png"} 
                     alt={`${project.title} Preview`} 
+                    loading="lazy"
+                    decoding="async"
+                    onLoad={(e) => {
+                      e.currentTarget.classList.add('loaded');
+                    }}
                     onError={(e) => {
                       console.log('Image failed to load:', project.image);
                       e.currentTarget.src = "/images/project-preview.png";
@@ -1920,6 +1964,11 @@ function App() {
                   <img 
                     src={project.image || "/images/project-preview.png"} 
                     alt={`${project.title} Preview`} 
+                    loading="lazy"
+                    decoding="async"
+                    onLoad={(e) => {
+                      e.currentTarget.classList.add('loaded');
+                    }}
                     onError={(e) => {
                       console.log('Image failed to load:', project.image);
                       e.currentTarget.src = "/images/project-preview.png";
@@ -1937,6 +1986,51 @@ function App() {
                       }}
                     >
                       View Case Study
+                    </CaseStudyButton>
+                  </ProjectOverlay>
+                </ProjectImage>
+              </ProjectCard>
+            ))}
+          </ProjectsGrid>
+
+          {/* Tikiti Event Management App - Full Width */}
+          <ProjectsGrid>
+            {projects.slice(4, 5).map((project) => (
+              <ProjectCard
+                key={project.id}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.98 }}
+                $isDarkMode={isDarkMode}
+                data-project={project.page}
+                onClick={() => window.open(project.url, '_blank')}
+                style={{ cursor: 'pointer' }}
+              >
+                <ProjectImage $bgColor={project.bgColor}>
+                  <img 
+                    src={project.image || "/images/project-preview.png"} 
+                    alt={`${project.title} Preview`} 
+                    loading="lazy"
+                    decoding="async"
+                    onLoad={(e) => {
+                      e.currentTarget.classList.add('loaded');
+                    }}
+                    onError={(e) => {
+                      console.log('Image failed to load:', project.image);
+                      e.currentTarget.src = "/images/project-preview.png";
+                    }}
+                  />
+                  <ProjectOverlay $isDarkMode={isDarkMode}>
+                    <ProjectTitle $isDarkMode={isDarkMode}>
+                      {project.title}
+                    </ProjectTitle>
+                    <CaseStudyButton 
+                      $isDarkMode={isDarkMode}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.open(project.url, '_blank');
+                      }}
+                    >
+                      View Live Site
                     </CaseStudyButton>
                   </ProjectOverlay>
                 </ProjectImage>
